@@ -80,8 +80,8 @@ class FNO3D(pl.LightningModule):
 
         loss = 0
         for j, jhat in zip([j], [jhat]):
-           # j_loss = F.mse_loss(j.view((1, -1)), jhat.view((1, -1)))
-            j_loss = F.binary_cross_entropy(jhat.view((1, -1)), j.view((1, -1)))
+            j_loss = F.mse_loss(j.view((1, -1)), jhat.view((1, -1)))
+           # j_loss = F.binary_cross_entropy(jhat.view((1, -1)), j.view((1, -1)))
             # div_loss = F.mse_loss(div.view((1, -1)), divhat.view((1, -1)))
             #self.log(f"loss_{j}", j_loss, on_step=False, on_epoch=True, logger=True, rank_zero_only=True)
             loss += self.beta_1 * j_loss #+ self.beta_2 * div_loss
@@ -109,8 +109,8 @@ class FNO3D(pl.LightningModule):
 
         val_loss = 0
         for j, jhat in zip([j], [jhat]):
-            j_loss = F.binary_cross_entropy(jhat.view((1, -1)), j.view((1, -1)))
-           # j_loss = F.mse_loss(j.view((1, -1)), jhat.view((1, -1)))
+           # j_loss = F.binary_cross_entropy(jhat.view((1, -1)), j.view((1, -1)))
+            j_loss = F.mse_loss(j.view((1, -1)), jhat.view((1, -1)))
             # div_loss = F.mse_loss(div.view((1, -1)), divhat.view((1, -1)))
             #self.log(f"val_loss_{j}", j_loss, on_step=False, on_epoch=True, logger=True, rank_zero_only=True)
             val_loss += self.beta_1 * j_loss #+ self.beta_2 * div_loss
@@ -139,8 +139,8 @@ class FNO3D(pl.LightningModule):
         test_loss = 0
         component_loss = []
         for j, jhat in zip([j], [jhat]):
-            j_loss = F.binary_cross_entropy(jhat.view((1, -1)), j.view((1, -1)))
-           # j_loss = F.mse_loss(j.view((1, -1)), jhat.view((1, -1)))
+           # j_loss = F.binary_cross_entropy(jhat.view((1, -1)), j.view((1, -1)))
+            j_loss = F.mse_loss(j.view((1, -1)), jhat.view((1, -1)))
             component_loss.append(j_loss)
             # div_loss = F.mse_loss(div.view((1, -1)), divhat.view((1, -1)))
             #self.log(f"val_loss_{j}", j_loss, on_step=False, on_epoch=True, logger=True, rank_zero_only=True)
