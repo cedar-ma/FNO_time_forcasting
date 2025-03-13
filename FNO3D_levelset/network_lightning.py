@@ -95,14 +95,14 @@ class FNO3D(pl.LightningModule):
     def predict_step(self, batch, batch_idx):
         sigma, j, means, stds = batch
         jhat = self(sigma)
-        print('Normal prediction range: ',jhat.min(),jhat.max())
-        print('Normal truth range: ',j.min(),j.max())
+        #print('Normal prediction range: ',jhat.min(),jhat.max())
+        #print('Normal truth range: ',j.min(),j.max())
         
         jhat = torch.squeeze(jhat,dim=-1)
         jhat = self.z_score_back_transform(jhat, means, stds) 
         j = self.z_score_back_transform(j, means, stds)
-        print('Back transform prediction range: ',jhat.min(),jhat.max())
-        print('Back transform truth range: ',j.min(),j.max())
+        #print('Back transform prediction range: ',jhat.min(),jhat.max())
+        #print('Back transform truth range: ',j.min(),j.max())
         binary_predictions = (jhat <= 0).float()
         j = (j <= 0).float()
         predictions = {
